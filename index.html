@@ -1,24 +1,3 @@
-<?php 
-if(isset($_POST['submit'])){
-    $to = "teodoucet11@gmail.com"; // this is your Email address
-    $from = $_POST['email']; // this is the sender's Email address
-    $question1 = $_POST['resp1'];
-    $question2 = $_POST['resp2'];
-    $question3 = $_POST['resp3'];
-    $subject = "Quiz submission";
-    $subject2 = "Copy of your form submission";
-    $message = $question1 . " " . $question2 . " " . $question3 . $_POST['message'];
-    $message2 = "Here is a copy of your message " . $first_name . "\n\n" . $_POST['message'];
-
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    mail($to,$subject,$message,$headers);
-    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
-    // You can also use header('Location: thank_you.php'); to redirect to another page.
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,15 +9,15 @@ if(isset($_POST['submit'])){
   <body>
     <h1>Cercle de Lecture MIA</h1>
     <form
-      action="https://formsubmit.co/kayle.robson@email.com"
-      method="POST"
+      action="mailto:kayle.robson@gmail.com"
+      method="post"
       enctype="text/plain"
       name="EmailForm"
       id="fr1"
     >
       <h4>
-        Quand la prof d'histoire fait des questions sur les Premieres Nations.
-        Page 79.
+        Quand la professeur d'histoire fait des questions sur les Premieres
+        Nations. Page 79.
       </h4>
       <h5>
         <ol type="1">
@@ -83,10 +62,16 @@ if(isset($_POST['submit'])){
 
       <label for="choisit ton nombre">choisit ton nombre</label>
       <input type="number" id="resp3" name="question3" min="1" max="4" />
+      <input
+        name="_next"
+        type="hidden"
+        value="https://revyrob.github.io/teosPage/pressed_submit_boton.html"
+      />
       <div>
         <!-- when the submit button is pressed there is a function that sends the answers to Teo's email -->
         <!-- Then it goes to another page where it shows Teo's squares -->
         <input type="submit" value="Submit" name="submit" id="bt1" />
+        <input type="submit" value="Send" />
       </div>
     </form>
     <a href="pressed_submit_boton.html"
