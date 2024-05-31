@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cercle de Lecture MIA</title>
-    <script>
+    <!-- <script>
       async function handleSubmit(event) {
         event.preventDefault(); // Prevent the default form submission
 
         const form = event.target;
         const formData = new FormData(form);
+        console.log(form);
 
         try {
           // Post form data to FormSubmit
@@ -30,8 +31,7 @@
           } else {
             // Handle errors if necessary
             alert(
-              "Form submission failed. Please try again. But still go to the cool page " +
-                <a href="pressed_submit_boton.html">"here"</a>
+              "Form submission failed. Please try again. But still go to the cool page "
             );
           }
         } catch (error) {
@@ -39,11 +39,31 @@
           alert("Form submission failed. Please try again.");
         }
       }
+    </script> -->
+    <script>
+      function sendMail(event) {
+        event.preventDefault(); // Prevent the form from submitting the default way
+
+        // Get form values
+        const resp1 = document.getElementById("resp1").value;
+        const resp2 = document.getElementById("resp2").value;
+        const resp3 = document.getElementById("resp3").value;
+
+        // Create mailto link
+        const subject = "Form Submission";
+        const body = `Responses: Response 1 = ${resp1}; Response 2 = ${resp2}; Response 3 = ${resp3}`;
+        const mailtoLink = `mailto:kayle.robson@email.com?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(body)}`;
+
+        // Open the mailto link
+        window.location.href = mailtoLink;
+      }
     </script>
   </head>
   <body>
     <h1>Cercle de Lecture MIA</h1>
-    <form onsubmit="handleSubmit(event)">
+    <form onsubmit="sendMail(event)">
       <h4>
         Quand la professeur d'histoire fait des questions sur les Premieres
         Nations. Page 79.
@@ -91,17 +111,17 @@
 
       <label for="choisit ton nombre">choisit ton nombre</label>
       <input type="number" id="resp3" name="question3" min="1" max="4" />
-      <input
-        name="_next"
-        type="hidden"
-        value="https://revyrob.github.io/teosPage/pressed_submit_boton.html"
-      />
+
       <div>
         <!-- when the submit button is pressed there is a function that sends the answers to Teo's email -->
         <!-- Then it goes to another page where it shows Teo's squares -->
         <input type="submit" value="Send" name="submit" id="bt1" />
       </div>
     </form>
-    <!-- <a href="pressed_submit_boton.html">if the submit bonton is pressed cool</a> -->
+    <button>
+      <a href="pressed_submit_boton.html"
+        >Congrats! Enjoy this mini animation</a
+      >
+    </button>
   </body>
 </html>
